@@ -47,7 +47,7 @@ TString mapName = "antarcticaIceMapBWa4.png";
 
 //////// Simple functions below
 
-// Enter your lat, long and command line to draw position on the Antarctic continent
+// Enter your lat, long via the command line to draw a position on the Antarctic continent
 void interactiveEntry()
 {
 
@@ -322,6 +322,54 @@ void findFromADU5Idata(Int_t firstRun, Int_t lastRun)
     
 }
 
+
+/// Plots full run lat and long on map for a range of runs
+void findFromADU5IdataGRAPH(Int_t firstRun, Int_t lastRun)
+{
+
+  Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter* amp = new Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter("hTest", "Testing", resSize, resSize);
+
+  FileStat_t staty;
+  char adu5IName[FILENAME_MAX];
+  
+  TChain *adu5IChain = new TChain("adu5PatTree");
+
+  for (int run=firstRun;run<lastRun+1; run++)
+    { 
+      sprintf(adu5IName,"/unix/anita4/flight2016/root/run%d/timedGpsEvent%d.root",run,run);
+      if(gSystem->GetPathInfo(adu5IName,staty))
+	{
+	  continue;
+	}
+      adu5IChain->Add(adu5IName);
+    }
+  
+  Adu5Pat * pat = 0;
+  adu5IChain->SetBranchAddress("pat",&pat);
+  UInt_t maxEntries = adu5IChain->GetEntries();
+
+  std::vector<Double_t> lats;
+  std::vector<Double_t> longs;
+  
+  for (unsigned int entry=0;entry<maxEntries;entry++)
+    {
+      adu5IChain->GetEntry(entry);
+      
+      lats.push_back(pat->latitude);
+      longs.push_back(pat->longitude);
+    }
+  
+  amp->DrawHist("colz");
+
+  amp->addTGraph("grTest", "More Testing", maxEntries, &lats[0], &longs[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(0.8);
+  amp->getCurrentTGraph()->SetMarkerColor(2);
+
+  amp->DrawTGraph("psame");
+    
+}
+
 ///////// HIGHLIGHT A SET OF RUNS FROM THE WHOLE FLIGHT
 // firstRun and lastRun are the runs you wish to plot in total
 // runToHighlight and runToHighlight2 are the runs you wish to highlight
@@ -332,7 +380,9 @@ void findFromADU5Idata(Int_t firstRun, Int_t lastRun)
 
 // void highlightRun(80, 90, 70, 100) plots part of the flight (70 - 100) and highlights runs 80-90
 
-void highlightRun(Int_t runToHighlight, Int_t runToHighlight2, Int_t firstRun = 50, Int_t lastRun = 170)
+// NOTE: Uses interpolated data set.
+
+void highlightRun(Int_t runToHighlight, Int_t runToHighlight2, Int_t firstRun = 42, Int_t lastRun = 366)
 {
   
   void initializeInternals();
