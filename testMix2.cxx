@@ -10,18 +10,22 @@ void testMix2()
   TFile f("tree1.root","recreate");
   TTree t1("t1","a simple Tree with simple variables");
 
-
   // BASE LIST VARS:
   std::string name;
+  
   int latDeg;
   double latMin;
   std::string latCar;
+  double fullLat;
+  
   int longDeg;
   double longMin;
   std::string longCar;
-  //double alt = std::stoi(7]); // will crash, as altitude isn't filled for all fields
+  double fullLong;
+  
+  double alt; // will crash, as altitude isn't filled for all fields
   std::string primaryOperator;
-  //int yearEst = std::stoi(9]);
+  int yearEst;
   std::string facType;
   std::string seasonality;
   std::string currentStatus;
@@ -31,12 +35,16 @@ void testMix2()
   t1.Branch("latDeg",&latDeg,"latDeg/I");
   t1.Branch("latMin",&latMin,"latMin/D");
   t1.Branch("latCar",&latCar);
+  t1.Branch("fullLat",&fullLat);
   
   t1.Branch("longDeg",&longDeg,"longDeg/I");
   t1.Branch("longMin",&longMin,"longMin/D");
   t1.Branch("longCar",&longCar);
+  t1.Branch("fullLong",&fullLong);
 
+  t1.Branch("alt",&alt);
   t1.Branch("primaryOperator",&primaryOperator);
+  t1.Branch("yearEst",&yearEst,"yearEst/I");
   t1.Branch("facType",&facType);
   t1.Branch("seasonality",&seasonality);
   t1.Branch("currentStatus",&currentStatus);
@@ -60,7 +68,7 @@ void testMix2()
 	  tokens.push_back(token); // add the token to the vector
         }
 
-      // map the tokens into our variables1
+      // map the tokens into our variables
       name = tokens[0];
       latDeg = std::stoi(tokens[1]);
       latMin = std::stof(tokens[2]);
@@ -68,12 +76,24 @@ void testMix2()
       longDeg = std::stoi(tokens[4]);
       longMin = std::stof(tokens[5]);
       longCar = tokens[6];
-      //double alt = std::stof(tokens[7]); // will crash, as altitude isn't filled for all fields
+      alt = std::stof(tokens[7]); // will crash, as altitude isn't filled for all fields
       primaryOperator = tokens[8];
-      //int yearEst = std::stoi(tokens[9]);
+      yearEst = std::stoi(tokens[9]);
       facType = tokens[10];
       seasonality = tokens[11];
       currentStatus = tokens[12];
+
+      fullLat = -latDeg - latMin/60;
+      
+      if(longCar == "E")
+	{
+	  fullLong = longDeg + (longMin)/60;
+	}
+
+      else if(longCar == "W")
+	{
+	  fullLong = -(longDeg + (longMin)/60);
+	}
 
       t1.Fill();
 
