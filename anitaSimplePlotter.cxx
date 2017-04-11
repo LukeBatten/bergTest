@@ -1,4 +1,4 @@
-// Trivial program to plot lat and long onto continent either manually or from GPS data
+// Trivial program to plot lat and long onto continent either manually, from GPS data or from a base list
 
 #include "AntarcticaMapPlotter.h"
 #include "AnitaConventions.h"
