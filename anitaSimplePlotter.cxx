@@ -488,59 +488,22 @@ void highlightRun(Int_t runToHighlight, Int_t runToHighlight2, Int_t firstRun = 
 void plotBaseList()
 {
 
-  std::cout << "Reading base file..." << std::endl;
-    
-  std::cout << "Printing bases..." << std::endl;
-
-  // in your case you'll have a file
-    // std::ifstream ifile("input.txt");
-    std::stringstream ifile("User1, 21, 70\nUser2, 25,68"); 
-
-    std::string line; // we read the full line here
-    while (std::getline(ifile, line)) // read the current line
-    {
-      std::istringstream iss(line); // construct a string stream from line
-
-        // read the tokens from current line separated by comma
-        std::vector<std::string> tokens; // here we store the tokens
-        std::string token; // current token
-        while (std::getline(iss, token, ','))
-        {
-            tokens.push_back(token); // add the token to the vector
-        }
-
-        // we can now process the tokens
-        // first display them
-        std::cout << "Tokenized line: ";
-        for (const auto& elem : tokens)
-            std::cout << "[" << elem << "]";
-        std::cout << std::endl;
-
-        // map the tokens into our variables, this applies to your scenario
-        std::string name = tokens[0]; // first is a string, no need for further processing
-        int age = std::stoi(tokens[1]); // second is an int, convert it
-        int height = std::stoi(tokens[2]); // same for third
-        std::cout << "Processed tokens: " << std::endl;
-        std::cout << "\t Name: " << name << std::endl;
-        std::cout << "\t Age: " << age << std::endl;
-        std::cout << "\t Height: " << height << std::endl;
-    }
-
   Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter* amp = new Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter("hTest", "Testing", resSize, resSize);
 
-  std::vector<Double_t> lats;
-  std::vector<Double_t> longs;  
+  TFile *baseFile = new TFile( TString::Format("/home/batten/anitaBuildTool/components/anitaEventCorrelator/data/tree1.root") );
+  TTree * t1 = (TTree*)baseFile->Get("t1");
+  t1->SetBranchAddress("latitude",&latitude);
+  t1->SetBranchAddress("longitude",&longitude);
+  UInt_t maxEntries = t1->GetEntries();
+  
+  for (unsigned int entry=0;entry<maxEntries;entry++)
+    {
+      t1->GetEntry(entry);
       
-  lats.push_back(77.626843);
-  longs.push_back(-34.626943);
+      amp->Fill(-1 * latitude, longitude);
+    }
   
   amp->DrawHist("colz");
 
-  amp->addTGraph("grBaseList", "Base List", 1, &lats[0], &longs[0]);
-  amp->getCurrentTGraph()->SetMarkerStyle(8);
-  amp->getCurrentTGraph()->SetMarkerSize(0.8);
-  amp->getCurrentTGraph()->SetMarkerColor(2);
-
-  amp->DrawTGraph("psame");
     
 }
