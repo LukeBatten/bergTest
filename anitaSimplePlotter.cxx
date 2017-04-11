@@ -488,8 +488,8 @@ void plotBaseList()
 
   Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter* amp = new Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter("hTest", "Testing", resSize, resSize);
 
-  TFile *baseFile = new TFile( TString::Format("/home/batten/anitaBuildTool/components/anitaEventCorrelator/data/tree1.root") );
-  TTree * t1 = (TTree*)baseFile->Get("t1");
+  TFile *baseFile = new TFile( TString::Format("/home/batten/bergTest/baseList.root") );
+  TTree * baseCampTree = (TTree*)baseFile->Get("baseCampTree");
 
   amp->DrawHist("colz");
 
@@ -512,11 +512,11 @@ void plotBaseList()
   Double_t fullLong;
   std::string *m_facType = new std::string;
   
-  t1->SetBranchAddress("fullLat",&fullLat);
-  t1->SetBranchAddress("fullLong",&fullLong);
-  t1->SetBranchAddress("facType",&m_facType);
+  baseCampTree->SetBranchAddress("fullLat",&fullLat);
+  baseCampTree->SetBranchAddress("fullLong",&fullLong);
+  baseCampTree->SetBranchAddress("facType",&m_facType);
   
-  UInt_t maxEntries = t1->GetEntries();
+  UInt_t maxEntries = baseCampTree->GetEntries();
   
   UInt_t stationEntries = 0;
   UInt_t campEntries = 0;
@@ -526,7 +526,7 @@ void plotBaseList()
   
   for (unsigned int entry=0;entry<maxEntries;entry++)
     {
-      t1->GetEntry(entry);
+      baseCampTree->GetEntry(entry);
 
       if(*m_facType == "Station")
 	{
@@ -576,7 +576,7 @@ void plotBaseList()
   amp->getCurrentTGraph()->SetMarkerColor(3);  
   amp->DrawTGraph("psame");
 
-  amp->addTGraph("grTestHighlight1", "More Testing Highlight1", campEntries, &lats1[0], &longs1[0]);
+  amp->addTGraph("grTestHighlighbaseCampTree", "More Testing HighlighbaseCampTree", campEntries, &lats1[0], &longs1[0]);
   amp->getCurrentTGraph()->SetMarkerStyle(8);
   amp->getCurrentTGraph()->SetMarkerSize(1.5);
   amp->getCurrentTGraph()->SetMarkerColor(2);      
@@ -602,7 +602,7 @@ void plotBaseList()
 
   TLegend *leg = new TLegend(0.75,0.7,0.85,0.9);
   leg->AddEntry("grTestHighlight","Bases","p");
-  leg->AddEntry("grTestHighlight1","Camps","p");
+  leg->AddEntry("grTestHighlighbaseCampTree","Camps","p");
   leg->AddEntry("grTestHighlight2","Airfield Camp","p");
   leg->AddEntry("grTestHighlight3","Refuge","p");
   leg->AddEntry("grTestHighlight4","Depot","p");
@@ -612,3 +612,192 @@ void plotBaseList()
 }
 
 
+void plotAllBaseList()
+{
+
+  Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter* amp = new Acclaim::AntarcticaMapPlotter::AntarcticaMapPlotter("hTest", "Testing", resSize, resSize);
+
+  TFile *baseFile = new TFile( TString::Format("/home/batten/bergTest/baseList.root") );
+  TTree * baseCampTree = (TTree*)baseFile->Get("baseCampTree");
+
+  amp->DrawHist("colz");
+
+  std::vector<Double_t> lats;
+  std::vector<Double_t> longs;
+
+  std::vector<Double_t> lats1;
+  std::vector<Double_t> longs1;
+
+  std::vector<Double_t> lats2;
+  std::vector<Double_t> longs2;
+
+  std::vector<Double_t> lats3;
+  std::vector<Double_t> longs3;
+
+  std::vector<Double_t> lats4;
+  std::vector<Double_t> longs4;
+
+  //
+  Double_t fullLat;
+  Double_t fullLong;
+  std::string *m_facType = new std::string;
+  
+  baseCampTree->SetBranchAddress("fullLat",&fullLat);
+  baseCampTree->SetBranchAddress("fullLong",&fullLong);
+  baseCampTree->SetBranchAddress("facType",&m_facType);
+  //
+  
+  UInt_t maxEntries = baseCampTree->GetEntries();
+  
+  UInt_t stationEntries = 0;
+  UInt_t campEntries = 0;
+  UInt_t airCampEntries = 0;
+  UInt_t refugeEntries = 0;
+  UInt_t depotEntries = 0;
+  
+  for (unsigned int entry=0;entry<maxEntries;entry++)
+    {
+      baseCampTree->GetEntry(entry);
+
+      if(*m_facType == "Station")
+	{
+	  lats.push_back(fullLat);
+	  longs.push_back(fullLong);
+	  stationEntries++;
+	}
+
+      else if(*m_facType == "Camp")
+	{
+	  lats1.push_back(fullLat);
+	  longs1.push_back(fullLong);
+	  campEntries++;
+	}
+
+      else if(*m_facType == "Airfield Camp")
+	{
+	  lats2.push_back(fullLat);
+	  longs2.push_back(fullLong);
+	  airCampEntries++;
+	}
+
+      else if(*m_facType == "Refuge")
+	{
+	  lats3.push_back(fullLat);
+	  longs3.push_back(fullLong);
+	  refugeEntries++;
+	}
+
+      else if(*m_facType == "Depot")
+	{
+	  lats4.push_back(fullLat);
+	  longs4.push_back(fullLong);
+	  depotEntries++;
+	}
+
+      else
+	{
+	  std::cerr << "What type of facility is it?" << std::endl;
+	}
+      
+    }
+
+  amp->addTGraph("grTestHighlight", "More Testing Highlight", stationEntries, &lats[0], &longs[0]);  
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(3);  
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlighbaseCampTree", "More Testing HighlighbaseCampTree", campEntries, &lats1[0], &longs1[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(2);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight2", "More Testing Highlight2", airCampEntries, &lats2[0], &longs2[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(6);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight3", "More Testing Highlight3", refugeEntries, &lats3[0], &longs3[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(7);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight4", "More Testing Highlight4", depotEntries, &lats4[0], &longs4[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(800);      
+  amp->DrawTGraph("psame");
+
+  TTree * fixedWingTree = (TTree*)baseFile->Get("fixedWingTree");
+
+  std::vector<Double_t> lats5;
+  std::vector<Double_t> longs5;
+
+   //
+  Double_t fullLat2;
+  Double_t fullLong2;
+  
+  fixedWingTree->SetBranchAddress("fullLat",&fullLat2);
+  fixedWingTree->SetBranchAddress("fullLong",&fullLong2);
+  //
+  
+  UInt_t maxEntries2 = fixedWingTree->GetEntries();
+  
+    for (unsigned int entry=0;entry<maxEntries2;entry++)
+    {
+      fixedWingTree->GetEntry(entry);
+
+      lats5.push_back(fullLat2);
+      longs5.push_back(fullLong2);
+    }
+
+    amp->addTGraph("grTestHighlight5", "More Testing Highlight5", maxEntries2, &lats5[0], &longs5[0]);  
+    amp->getCurrentTGraph()->SetMarkerStyle(31);
+    amp->getCurrentTGraph()->SetMarkerSize(3);
+    amp->getCurrentTGraph()->SetMarkerColor(4);  
+    amp->DrawTGraph("psame");
+
+    //
+    TTree * awsTree = (TTree*)baseFile->Get("awsTree");
+
+    std::vector<Double_t> lats6;
+    std::vector<Double_t> longs6;
+
+    //
+    Double_t fullLat3;
+    Double_t fullLong3;
+  
+    awsTree->SetBranchAddress("fullLat",&fullLat3);
+    awsTree->SetBranchAddress("fullLong",&fullLong3);
+    //
+  
+    UInt_t maxEntries3 = awsTree->GetEntries();
+  
+    for (unsigned int entry=0;entry<maxEntries3;entry++)
+      {
+	awsTree->GetEntry(entry);
+
+	lats6.push_back(fullLat3);
+	longs6.push_back(fullLong3);
+      }
+
+    amp->addTGraph("grTestHighlight6", "More Testing Highlight6", maxEntries3, &lats6[0], &longs6[0]);  
+    amp->getCurrentTGraph()->SetMarkerStyle(34);
+    amp->getCurrentTGraph()->SetMarkerSize(2);
+    amp->getCurrentTGraph()->SetMarkerColor(90);  
+    amp->DrawTGraph("psame");
+    
+  TLegend *leg = new TLegend(0.75,0.7,0.85,0.9);
+  leg->AddEntry("grTestHighlight","Bases","p");
+  leg->AddEntry("grTestHighlighbaseCampTree","Camps","p");
+  leg->AddEntry("grTestHighlight2","Airfield Camp","p");
+  leg->AddEntry("grTestHighlight3","Refuge","p");
+  leg->AddEntry("grTestHighlight4","Depot","p");
+  leg->AddEntry("grTestHighlight5","Fixed Wing","p");
+  leg->AddEntry("grTestHighlight6","AWS","p");
+  leg->Draw();
+    
+}
