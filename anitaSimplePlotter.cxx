@@ -499,7 +499,7 @@ void plotBaseList()
     std::string line; // we read the full line here
     while (std::getline(ifile, line)) // read the current line
     {
-        std::istringstream iss{line}; // construct a string stream from line
+      std::istringstream iss(line); // construct a string stream from line
 
         // read the tokens from current line separated by comma
         std::vector<std::string> tokens; // here we store the tokens
