@@ -1,0 +1,7 @@
+Some programs to pull the recent base lists, and convert them into root files
+You will probably need a lot of few requisites, such as ssconvert
+
+run ./rootifyBaseList
+
+After you run, there will be several useful files.
+The main one being baseList.root, which contains 3 trees for each station type.
