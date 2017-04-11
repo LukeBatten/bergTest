@@ -496,30 +496,117 @@ void plotBaseList()
   std::vector<Double_t> lats;
   std::vector<Double_t> longs;
 
+  std::vector<Double_t> lats1;
+  std::vector<Double_t> longs1;
+
+  std::vector<Double_t> lats2;
+  std::vector<Double_t> longs2;
+
+  std::vector<Double_t> lats3;
+  std::vector<Double_t> longs3;
+
+  std::vector<Double_t> lats4;
+  std::vector<Double_t> longs4;
+
   Double_t fullLat;
   Double_t fullLong;
+  std::string *m_facType = new std::string;
   
   t1->SetBranchAddress("fullLat",&fullLat);
   t1->SetBranchAddress("fullLong",&fullLong);
+  t1->SetBranchAddress("facType",&m_facType);
   
   UInt_t maxEntries = t1->GetEntries();
+  
+  UInt_t stationEntries = 0;
+  UInt_t campEntries = 0;
+  UInt_t airCampEntries = 0;
+  UInt_t refugeEntries = 0;
+  UInt_t depotEntries = 0;
   
   for (unsigned int entry=0;entry<maxEntries;entry++)
     {
       t1->GetEntry(entry);
+
+      if(*m_facType == "Station")
+	{
+	  lats.push_back(fullLat);
+	  longs.push_back(fullLong);
+	  stationEntries++;
+	}
+
+      else if(*m_facType == "Camp")
+	{
+	  lats1.push_back(fullLat);
+	  longs1.push_back(fullLong);
+	  campEntries++;
+	}
+
+      else if(*m_facType == "Airfield Camp")
+	{
+	  lats2.push_back(fullLat);
+	  longs2.push_back(fullLong);
+	  airCampEntries++;
+	}
+
+      else if(*m_facType == "Refuge")
+	{
+	  lats3.push_back(fullLat);
+	  longs3.push_back(fullLong);
+	  refugeEntries++;
+	}
+
+      else if(*m_facType == "Depot")
+	{
+	  lats4.push_back(fullLat);
+	  longs4.push_back(fullLong);
+	  depotEntries++;
+	}
+
+      else
+	{
+	  std::cerr << "What type of facility is it?" << std::endl;
+	}
       
-      lats.push_back(fullLat);
-      longs.push_back(fullLong);
     }
 
-  // Highlight
-  amp->addTGraph("grTestHighlight", "More Testing Highlight", maxEntries, &lats[0], &longs[0]);
+  amp->addTGraph("grTestHighlight", "More Testing Highlight", stationEntries, &lats[0], &longs[0]);  
   amp->getCurrentTGraph()->SetMarkerStyle(8);
-  amp->getCurrentTGraph()->SetMarkerSize(1.2);
-  amp->getCurrentTGraph()->SetMarkerColor(3);    
-  //
-  
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(3);  
   amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight1", "More Testing Highlight1", campEntries, &lats1[0], &longs1[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(2);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight2", "More Testing Highlight2", airCampEntries, &lats2[0], &longs2[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(6);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight3", "More Testing Highlight3", refugeEntries, &lats3[0], &longs3[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(7);      
+  amp->DrawTGraph("psame");
+
+  amp->addTGraph("grTestHighlight4", "More Testing Highlight4", depotEntries, &lats4[0], &longs4[0]);
+  amp->getCurrentTGraph()->SetMarkerStyle(8);
+  amp->getCurrentTGraph()->SetMarkerSize(1.5);
+  amp->getCurrentTGraph()->SetMarkerColor(800);      
+  amp->DrawTGraph("psame");
+
+  TLegend *leg = new TLegend(0.75,0.7,0.85,0.9);
+  leg->AddEntry("grTestHighlight","Bases","p");
+  leg->AddEntry("grTestHighlight1","Camps","p");
+  leg->AddEntry("grTestHighlight2","Airfield Camp","p");
+  leg->AddEntry("grTestHighlight3","Refuge","p");
+  leg->AddEntry("grTestHighlight4","Depot","p");
+  leg->Draw();
 
     
 }
