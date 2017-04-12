@@ -5,3 +5,12 @@ run ./rootifyBaseList
 
 After you run, there will be several useful files.
 The main one being baseList.root, which contains 3 trees for each station type.
+
+Current problems: 
+
+> basesCampsRootifierA3.cxx will not completely rootify as the current spreadsheet uses '~' to denote
+an approximation. This continues through to the csv files, which cannot be read too well by the rootifier.
+>>> Potential solution: use sed to remove approximations!
+
+> Many fields are empty... 
+>>> Potential solution: fix this in the spreadsheet!
