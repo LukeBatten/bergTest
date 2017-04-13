@@ -8,11 +8,20 @@ rm -rf base_list-A3-unrestricted.*
 # Remove all relevant existing root files
 rm -f baseList.root
 rm -f baseListA3.root
+rm -r baseData/
 
 # Get most recent from the elog. CHECK the string after anita_notes
 echo "Pulling the newest spreadsheets from the elog"
-wget -N "https://www.phys.hawaii.edu/elog/anita_notes/170409_223955/base_list-A4-unrestricted.ods" # overwrite!
-wget -N "https://www.phys.hawaii.edu/elog/anita_notes/170410_214006/base_list-A3-unrestricted.ods" # overwrite!
+wget -N "https://www.phys.hawaii.edu/elog/anita_notes/170412_152445/base_data_unrestricted-A4.tar.gz" # overwrite!
+wget -N "https://www.phys.hawaii.edu/elog/anita_notes/170412_152426/base_data_unrestricted-A3.tar.gz" #overwrite!
+
+echo "Extracting information..."
+mkdir ./baseData
+tar -zvxf base_data_unrestricted-A4.tar.gz -C ./baseData
+tar -zvxf base_data_unrestricted-A3.tar.gz -C ./baseData
+
+cp ./baseData/unrestricted-A4/base_list-A4-unrestricted.ods .
+cp ./baseData/unrestricted-A3/base_list-A3-unrestricted.ods .
 
 echo "Converting the individual spreadsheet 'sheets' into .csv files"
 # converts spreadsheets into individual sheets
