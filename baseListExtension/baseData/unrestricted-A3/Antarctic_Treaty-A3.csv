@@ -1,0 +1,86 @@
+Site name,Latitude (degrees),Latitude (minutes),Latitude (cardinality),Longitude (degrees),Longitude (minutes),Longitude (cardinality),Altitude above sea level (m),Altitude certainty (Y/N),Primary operator,Established,Facility type,Seasonality
+site_name,latitude_d,latitude_m,latitude_c,longitude_d,longitude_m,longitude_c,alt_masl,alt_cert,prime_op,established,facility_type,seasonality
+Refugio 17 de agosto,68,7.78333333333333,S,67,13.4333333333333,W,-999,N,Argentina,1957-08-17,Refuge,X
+Refugio Cristo Redentor,63,33.2166666666667,S,57,22.7333333333333,W,-999,N,Argentina,1955-05-25,Refuge,X
+Refugio Independencia Argentina,63,27.6,S,57,11.2333333333333,W,-999,N,Argentina,1967-08-21,Refuge,X
+Refugio Islas Malvinas,63,25.1666666666667,S,56,59.8333333333333,W,-999,N,Argentina,1971-08-26,Refuge,X
+Refugio Martín Güemes,63,28.5,S,57,3.9,W,-999,N,Argentina,1959-09-15,Refuge,X
+Refugio Ona,68,6.03333333333333,S,67,1.53333333333333,W,-999,N,Argentina,1995-02-22,Refuge,X
+Refugio Sarg Ayte Cisterna,77,52.9333333333333,S,34,18.9166666666667,W,-999,N,Argentina,1976-01-27,Refuge,X
+Ace Lake,68,28.3,S,78,11.2666666666667,E,-999,N,Australia,2004,Refuge,Seasonal
+Bandits Bluff,68,25.3,S,78,23.0833333333333,E,-999,N,Australia,1983,Refuge,Seasonal
+Bechervaise Island Huts,67,35.0333333333333,S,62,48.0666666666667,E,-999,N,Australia,-999,Refuge,X
+Brookes Refuge,68,36.1,S,78,11.0833333333333,E,-999,N,Australia,1972,Refuge,Seasonal
+Browning Peninsula,66,28.1666666666667,S,110,33,E,-999,N,Australia,-999,Refuge,Seasonal
+Cape Denison,67,0,S,142,40,E,-999,N,Australia,-999,Refuge,Seasonal
+Colbeck Archipelago,67,24.85,S,61,0.3,E,-999,N,Australia,1988,Refuge,X
+Crooked Lake,68,37.0166666666667,S,72,22.9166666666667,E,-999,N,Australia,-999,Refuge,Seasonal
+Fang Peak,67,47.6833333333333,S,62,35.0666666666667,E,-999,N,Australia,1982,Refuge,X
+Filla Island,68,48.4833333333333,S,77,51.3833333333333,E,-999,N,Australia,1999,Refuge,Seasonal
+Jack’s Donga,66,13.1166666666667,S,110,39.0333333333333,E,-999,N,Australia,1972,Refuge,Year-round
+"Henderson, Mount",67,42.05,S,63,3.38333333333333,E,-999,N,Australia,1978,Refuge,X
+Hop Island,68,49.7166666666667,S,77,42.1333333333333,E,-999,N,Australia,1990,Refuge,Seasonal
+Ledingham Depot,67,22,S,59,27.15,E,-999,N,Australia,1984,Refuge,X
+Macey Islands,67,26.35,S,63,49.15,E,-999,N,Australia,1971,Refuge,Seasonal
+Marine Plain Refuge,68,36.15,S,78,6.08333333333333,E,-999,N,Australia,-999,Refuge,Seasonal
+Peterson Island,66,28,S,110,30,E,-999,N,Australia,-999,Refuge,X
+Platcha,68,30.7,S,78,30.7333333333333,E,-999,N,Australia,1961,Refuge,X
+Robinson Ridge,66,22.1333333333333,S,110,35.6666666666667,E,-999,N,Australia,1988,Refuge,Seasonal
+Rookery Lake,68,29.8833333333333,S,78,4.38333333333333,E,-999,N,Australia,-999,Refuge,X
+Rumdoodle Lake,67,46.1333333333333,S,62,49.0166666666667,E,-999,N,Australia,-999,Refuge,X
+Scullin Monolith,67,47,S,66,42,E,-999,N,Australia,1988,Refuge,Seasonal
+Trajer Ridge,68,33.65,S,78,30,E,-999,N,Australia,1988,Refuge,Seasonal
+Watts Lake,68,36.2,S,78,13.1666666666667,E,-999,N,Australia,-999,Refuge,Seasonal
+Wilkes,66,15.4333333333333,S,110,31.5333333333333,E,-999,N,Australia,1962,Refuge,Year-round
+Doumer Island,64,51,S,63,34,W,0,N,Netherlands,-999,Camp,X
+Ferguson Channel,64,54,S,63,0,W,0,N,Netherlands,-999,Camp,X
+Jougla Point,64,49.5833333333333,S,63,29.6166666666667,W,0,N,Netherlands,-999,Camp,X
+Rongé Island,64,43,S,62,41,W,0,N,Netherlands,-999,Camp,X
+Hovgaard Island,65,8,S,64,8,W,0,N,NL & NOR,-999,Camp,X
+Leith Cove,64,52,S,62,50,W,0,N,NL & NOR,-999,Camp,X
+Bratina Island,78,1,S,165,32,E,-999,N,New Zealand,-999,Refuge,X
+Cape Bird,77,13.1,S,166,26.1666666666667,E,-999,N,New Zealand,-999,Refuge,X
+Cape Evans,77,38.3,S,166,24.4166666666667,E,-999,N,New Zealand,-999,Refuge,X
+Cape Roberts,77,2,S,163,12,E,-999,N,New Zealand,-999,Refuge,X
+Cape Royds,72,19.2166666666667,S,170,13.5666666666667,E,-999,N,New Zealand,-999,Refuge,X
+Wright Valley,77,31,S,161,50,E,-999,N,New Zealand,-999,Refuge,X
+Danco Island,64,44,S,62,37,W,0,N,Norway,-999,Camp,X
+Neco Harbor,64,50,S,62,33,W,0,N,Norway,-999,Camp,X
+Paradise Cove,62,13,S,58,26.5,W,-999,N,Poland,-999,Refuge,X
+Admiralty Bay,62,9.68333333333333,S,58,28.1666666666667,W,10,Y,Poland,-999,Refuge,X
+King George Bay,62,6,S,58,5,W,-999,N,Poland,-999,Refuge,X
+Campamento temporal de P. Byers,62,34.5833333333333,S,61,13.1166666666667,W,-999,N,Spain,-999,Camp,X
+Rasmussen Peninsula,68,53,S,67,13,W,9,Y,UK & Ukraine,1984-03,Refuge,Year-round
+Stella Creek,65,15,S,64,16,W,-999,N,UK & Ukraine,1947,Refuge,X
+Detaille Island,66,52,S,66,48,W,-999,N,United Kingdom,1956-02,Refuge,X
+Blaiklock Island,67,33,S,67,4,W,-999,N,United Kingdom,1995-03,Refuge,X
+Cummings Cove,60,43.4166666666667,S,45,40,W,-999,N,United Kingdom,-999,Refuge,Seasonal
+Foca Cove,60,41.75,S,45,38.65,W,-999,N,United Kingdom,-999,Refuge,Seasonal
+Gourlay Point,60,43.9333333333333,S,45,34.8833333333333,W,-999,N,United Kingdom,2007-03,Refuge,Seasonal
+Lagoon Island,67,35.6666666666667,S,68,14.1666666666667,W,0,N,United Kingdom,1989-11,Refuge,Year-round
+Cape Geddes,60,41,S,44,34,W,-999,N,United Kingdom,1946-01,Refuge,X
+Waterpipe Beach,60,42,S,45,36.5,W,0,N,United Kingdom,1999,Refuge,Seasonal
+Dorian Bay,64,49,S,63,30,W,-999,N,United Kingdom,1975-11,Refuge,X
+Sally Cove,67,48,S,67,17,W,-999,N,United Kingdom,1955-03-11,Refuge,Year-round
+Goudier Island,64,49.5,S,63,29.6,W,-999,N,United Kingdom,1944-02,Refuge,X
+Stonington Island,68,11,S,67,0,W,-999,N,United Kingdom,1946-02,Refuge,X
+Mt Newall Repeater,77,30.2666666666667,S,162,37.5,E,-999,N,USA & NZ,-999,Station,X
+Big Razorback Island,77,41,S,166,30,E,0,N,USA,-999,Field camp,X
+Black Island Camp,78,8,S,166,9,E,-999,N,USA,-999,Field camp,X
+Blood Falls,77,43.3333333333333,S,162,16.2833333333333,E,-999,N,USA,-999,Field camp,X
+Bull Pass,77,31.0166666666667,S,161,51.0833333333333,E,-999,N,USA,-999,Field camp,X
+Cape Crozier Camp,77,30,S,169,40,E,-999,N,USA,-999,Field camp,X
+Cape Royds Camp,77,33,S,166,8,E,-999,N,USA,-999,Field camp,Seasonal
+F6 Camp,77,36.5,S,163,15.3333333333333,E,-999,N,USA,-999,Field camp,X
+Fang Glacier Camp,77,29,S,167,14,E,-999,N,USA,-999,Field camp,X
+Lake Bonney,77,42,S,162,27,E,-999,N,USA,-999,Field camp,X
+Lake Fryxell,77,36,S,163,7,E,-999,N,USA,-999,Field camp,X
+Lake Hoare Camp,77,37.3666666666667,S,162,54.1666666666667,E,-999,N,USA,-999,Field camp,X
+Lake Joyce,77,43.1666666666667,S,161,35.8666666666667,E,-999,N,USA,-999,Field camp,X
+Lower Erebus Hut,77,30,S,167,10,E,-999,N,USA,-999,Field camp,Year-round
+New Harbor Camp,77,34.6666666666667,S,163,31.1666666666667,E,-999,N,USA,-999,Field camp,X
+Pine Island Glacier Helo Facility,75,48.2166666666667,S,100,16.6333333333333,W,-999,N,USA,2010-12,Field camp,X
+WAIS Divide,79,41,S,112,5,W,-999,N,USA,-999,Field camp,X
+Windless Bight,77,42,S,167,40,E,-999,N,USA,-999,Field camp,X
+WISSARD 2013,84,12.6,S,163,47.4,W,-999,N,USA,2013,Field camp,X
+Fildes Peninsula,62,12,S,58,58,W,-999,N,Venezuela,-999,Field camp,X

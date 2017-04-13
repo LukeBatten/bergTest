@@ -47,7 +47,7 @@ void awsRootifierA3()
   // CUSTOM VARS (calculated from the base list)
   
   // Load base list
-  std::ifstream ifile("base_list-A3-unrestricted.csv.2");
+  std::ifstream ifile("base_list-A3-unrestricted.csv.3");
 
   std::string line; 
   while (std::getline(ifile, line))

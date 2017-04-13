@@ -24,6 +24,7 @@ void basesCampsRootifierA3()
   double fullLong;
   
   double alt; // will crash, as altitude isn't filled for all fields
+  std::string altCertainty;
   std::string primaryOperator;
   int yearEst;
   std::string facType;
@@ -42,6 +43,7 @@ void basesCampsRootifierA3()
   baseCampTree.Branch("fullLong",&fullLong);
 
   baseCampTree.Branch("alt",&alt);
+  baseCampTree.Branch("altCertainty",&altCertainty);
   baseCampTree.Branch("primaryOperator",&primaryOperator);
   baseCampTree.Branch("yearEst",&yearEst,"yearEst/I");
   baseCampTree.Branch("facType",&facType);
@@ -75,10 +77,11 @@ void basesCampsRootifierA3()
       longMin = std::stof(tokens[5]);
       longCar = tokens[6];
       alt = std::stof(tokens[7]); // will crash, as altitude isn't filled for all fields
-      primaryOperator = tokens[8];
-      yearEst = std::stoi(tokens[9]);
-      facType = tokens[10];
-      seasonality = tokens[11];
+      altCertainty = tokens[8];
+      primaryOperator = tokens[9];
+      yearEst = std::stoi(tokens[10]);
+      facType = tokens[11];
+      seasonality = tokens[12];
 
       fullLat = -latDeg - latMin/60;
       

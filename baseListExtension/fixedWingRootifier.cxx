@@ -42,7 +42,7 @@ void fixedWingRootifier()
   // CUSTOM VARS (calculated from the base list)
   
   // Load base list
-  std::ifstream ifile("base_list-A4-unrestricted.csv.1"); // 0 = stations+camps, 1 = USAP landing sites, 2 = AWS
+  std::ifstream ifile("base_list-A4-unrestricted.csv.2");
 
   std::string line; 
   while (std::getline(ifile, line))
