@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-void testMix2()
+void basesCampsRootifier()
 {
 
   TFile f("tree1.root","recreate");
